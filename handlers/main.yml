@@ -1,0 +1,3 @@
+---
+- name: restart exim
+  service: "name={{ exim_daemon }} state=restarted"
