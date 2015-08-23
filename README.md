@@ -12,7 +12,13 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    TODO
+    exim_dc_eximconfig_configtype: internet
+
+Main configuration type. Should be 'internet' for public mail sending, or 'local' if mail should only be delivered locally. See Exim documentation for other options.
+
+    exim_dc_localdelivery: mail_spool
+
+Default transport for local mail delivery. Defaults to `mail_spool` if unset.
 
 ## Dependencies
 

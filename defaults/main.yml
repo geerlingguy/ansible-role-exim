@@ -1,0 +1,8 @@
+---
+# Main configuration type. Should be 'internet' for public mail sending, or
+# 'local' if mail should only be delivered locally. See Exim documentation for
+# other options.
+exim_dc_eximconfig_configtype: internet
+
+# Other exim directives.
+exim_dc_localdelivery: mail_spool

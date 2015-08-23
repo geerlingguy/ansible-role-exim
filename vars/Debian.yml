@@ -1,2 +1,3 @@
 ---
 exim_daemon: exim4
+exim_configuration_file: /etc/exim4/update-exim4.conf.conf
