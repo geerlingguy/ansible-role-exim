@@ -22,9 +22,9 @@ script:
 
   # Run the role/playbook with ansible-playbook.
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
-  - sudo service exim status
-  - sudo service exim restart
-  - ls -lah /var/log
+  - sudo service exim4 status
+  - sudo service exim4 restart
+  - ls -lah /var/log/exim4
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
