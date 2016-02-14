@@ -24,7 +24,7 @@ script:
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
   - sudo service exim4 status
   - sudo service exim4 restart
-  - ls -lah /var/log/exim4
+  - sudo ls -lah /var/log/exim4
   - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
