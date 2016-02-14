@@ -10,7 +10,7 @@
 - include: setup-Debian.yml
   when: ansible_os_family == 'Debian'
 
-- name: Configure exim.
+- name: Configure exim (Debian only).
   lineinfile:
     dest: "{{ exim_configuration_file }}"
     regexp: "{{ item.regexp }}"
@@ -20,6 +20,7 @@
     - { regexp: '^dc_eximconfig_configtype', line: "dc_eximconfig_configtype='{{ exim_dc_eximconfig_configtype }}'" }
     - { regexp: '^dc_localdelivery', line: "dc_localdelivery='{{ exim_dc_localdelivery }}'" }
   notify: restart exim
+  when: ansible_os_family == 'Debian'
 
 - name: Ensure exim is running.
   service: "name={{ exim_daemon }} state=started enabled=yes"
