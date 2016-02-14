@@ -38,6 +38,7 @@ script:
 
   # Test role.
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml'
+  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml'
 
   # Test role idempotence.
   - >
@@ -49,6 +50,7 @@ script:
   # Test if exim is working.
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ps waux | grep [e]xim'
   - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm exim -bV'
+  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm cat /etc/exim/exim.conf'
 
   # Clean up
   - 'sudo docker stop "$(cat ${container_id})"'
