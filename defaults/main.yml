@@ -6,3 +6,6 @@ exim_dc_eximconfig_configtype: internet
 
 # Other exim directives.
 exim_dc_localdelivery: mail_spool
+
+# Set a primary_hostname. If empty, the directive will be ignored.
+exim_primary_hostname: ""

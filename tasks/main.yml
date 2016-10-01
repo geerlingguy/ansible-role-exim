@@ -22,5 +22,14 @@
   notify: restart exim
   when: ansible_os_family == 'Debian'
 
+- name: Configure primary_hostname (if set).
+  lineinfile:
+    dest: "{{ exim_configuration_file }}"
+    regexp: '^#?\s?primary_hostname'
+    line: "primary_hostname={{ exim_primary_hostname }}"
+    state: present
+  notify: restart exim
+  when: exim_primary_hostname != ''
+
 - name: Ensure exim is running.
   service: "name={{ exim_daemon }} state=started enabled=yes"

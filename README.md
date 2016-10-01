@@ -20,6 +20,10 @@ Available variables are listed below, along with default values (see `defaults/m
 
 (Debian/Ubuntu only) Default transport for local mail delivery. Defaults to `mail_spool` if unset.
 
+    exim_primary_hostname: ""
+
+Force a primary server hostname for Exim. Usually you don't need to set this, but if Exim can't reliably determine the FQDN of your server, you can set this and it will ensure Exim uses the correct hostname.
+
 ## Dependencies
 
 None.
@@ -28,7 +32,7 @@ None.
 
     - hosts: servers
       roles:
-        - { role: geerlingguy.exim }
+        - geerlingguy.exim
 
 ## License
 
