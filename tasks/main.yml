@@ -17,8 +17,20 @@
     line: "{{ item.line }}"
     state: present
   with_items:
-    - { regexp: '^dc_eximconfig_configtype', line: "dc_eximconfig_configtype='{{ exim_dc_eximconfig_configtype }}'" }
-    - { regexp: '^dc_localdelivery', line: "dc_localdelivery='{{ exim_dc_localdelivery }}'" }
+    - { regexp: '^dc_eximconfig_configtype', line: "dc_eximconfig_configtype='{{ exim_dc_eximconfig_configtype }}'", name: "exim_dc_eximconfig_configtype" }
+    - { regexp: '^dc_localdelivery', line: "dc_localdelivery='{{ exim_dc_localdelivery }}'", name: "exim_dc_localdelivery" }
+    - { regexp: '^dc_other_hostnames', line: "dc_other_hostnames='{{ exim_dc_other_hostnames }}'", name: "exim_dc_other_hostnames" }
+    - { regexp: '^dc_local_interfaces', line: "dc_local_interfaces='{{ exim_dc_local_interfaces }}'", name: "exim_dc_local_interfaces" }
+    - { regexp: '^dc_readhost', line: "dc_readhost='{{ exim_dc_readhost }}'", name: "exim_dc_readhost" }
+    - { regexp: '^dc_relay_domains', line: "dc_relay_domains='{{ exim_dc_relay_domains }}'", name: "exim_dc_relay_domains" }
+    - { regexp: '^dc_minimaldns', line: "dc_minimaldns='{{ exim_dc_minimaldns }}'", name: "exim_dc_minimaldns" }
+    - { regexp: '^dc_relay_nets', line: "dc_relay_nets='{{ exim_dc_relay_nets }}'", name: "exim_dc_relay_nets" }
+    - { regexp: '^dc_smarthost', line: "dc_smarthost='{{ exim_dc_smarthost }}'", name: "exim_dc_smarthost" }
+    - { regexp: '^CFILEMODE', line: "CFILEMODE='{{ exim_cfilemode }}'", name: "exim_cfilemode" }
+    - { regexp: '^dc_use_split_config', line: "dc_use_split_config='{{ exim_dc_use_split_config }}'", name: "exim_dc_use_split_config" }
+    - { regexp: '^dc_hide_mailname', line: "dc_hide_mailname='{{ exim_dc_hide_mailname }}'", name: "exim_dc_hide_mailname" }
+    - { regexp: '^dc_mailname_in_oh', line: "dc_mailname_in_oh='{{ exim_dc_mailname_in_oh }}'", name: "exim_dc_mailname_in_oh" }
+    - { regexp: '^dc_localdelivery', line: "dc_localdelivery='{{ exim_dc_localdelivery }}'", name: "exim_dc_localdelivery" }
   notify: restart exim
   when: ansible_os_family == 'Debian'
 
