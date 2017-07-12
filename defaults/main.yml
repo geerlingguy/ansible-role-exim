@@ -9,3 +9,15 @@ exim_dc_localdelivery: mail_spool
 
 # Set a primary_hostname. If empty, the directive will be ignored.
 exim_primary_hostname: ""
+
+exim_dc_other_hostnames: ''
+exim_dc_local_interfaces: '127.0.0.1 ; ::1'
+exim_dc_readhost: ''
+exim_dc_relay_domains: ''
+exim_dc_minimaldns: 'false'
+exim_dc_relay_nets: ''
+exim_dc_smarthost: ''
+exim_cfilemode: '644'
+exim_dc_use_split_config: 'false'
+exim_dc_hide_mailname: ''
+exim_dc_mailname_in_oh: 'true'
