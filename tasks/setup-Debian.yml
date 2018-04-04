@@ -1,3 +1,0 @@
----
-- name: Ensure exim is installed.
-  apt: name=exim4 state=present

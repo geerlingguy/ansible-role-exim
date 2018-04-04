@@ -1,3 +1,0 @@
----
-- name: Ensure exim is installed.
-  yum: name=exim state=present

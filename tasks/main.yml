@@ -4,11 +4,8 @@
   include_vars: "{{ ansible_os_family }}.yml"
 
 # Setup/install tasks.
-- include: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
-- include: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
+- name: Ensure exim is installed.
+  package: "name={{ exim_package }} state=present"
 
 - name: Configure exim (Debian only).
   lineinfile:
@@ -17,8 +14,10 @@
     line: "{{ item.line }}"
     state: present
   with_items:
-    - { regexp: '^dc_eximconfig_configtype', line: "dc_eximconfig_configtype='{{ exim_dc_eximconfig_configtype }}'" }
-    - { regexp: '^dc_localdelivery', line: "dc_localdelivery='{{ exim_dc_localdelivery }}'" }
+    - regexp: '^dc_eximconfig_configtype'
+      line: "dc_eximconfig_configtype='{{ exim_dc_eximconfig_configtype }}'"
+    - regexp: '^dc_localdelivery'
+      line: "dc_localdelivery='{{ exim_dc_localdelivery }}'"
   notify: restart exim
   when: ansible_os_family == 'Debian'
 
