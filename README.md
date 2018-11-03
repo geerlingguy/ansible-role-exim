@@ -14,15 +14,38 @@ Available variables are listed below, along with default values (see `defaults/m
 
     exim_dc_eximconfig_configtype: internet
 
-(Debian/Ubuntu only) Main configuration type. Should be 'internet' for public mail sending, or 'local' if mail should only be delivered locally. See Exim documentation for other options.
+Mail configuration type. Should be one of:
+
+  - 'internet' for public mail facing server,
+  - 'smarthost' for relay via smarthost, but accept via SMTP, 
+  - 'satellite' if sending via smarthost (c.f. 'exim_dc_smarthost'), or
+  - 'local' if mail should only be delivered locally. 
+
+See Exim documentation for other options.  *(Debian/Ubuntu only)*
+
+    exim_dc_other_hostnames: "{{ansible_hostname}}"
+
+Other hostnames for which this host will accept email.  *(Debian/Ubuntu only)*
+
+    exim_dc_smarthost: ''
+
+Relay mail through a different "smarthost" (or for 'satellite')  *(Debian/Ubuntu only)*
+
+    exim_dc_readhost: ''
+
+Rewrite outgoing mail local machine with this value.  *(Debian/Ubuntu only)*
+
+    exim_dc_hide_mailname: ''
+
+Hide the local mailname in the headers of outgoing messages (or not).  *(Debian/Ubuntu only)*
 
     exim_dc_localdelivery: mail_spool
 
-(Debian/Ubuntu only) Default transport for local mail delivery. Defaults to `mail_spool` if unset.
+Local delivery method.  *(Debian/Ubuntu only)*
 
     exim_primary_hostname: ""
 
-Force a primary server hostname for Exim. Usually you don't need to set this, but if Exim can't reliably determine the FQDN of your server, you can set this and it will ensure Exim uses the correct hostname.
+Force a primary server hostname for Exim. Usually you don't need to set this, but if Exim can't reliably determine the FQDN of your server, you can set this and it will ensure Exim uses the correct hostname.  If empty, the directive will be ignored.
 
 ## Dependencies
 
@@ -32,7 +55,12 @@ None.
 
     - hosts: servers
       roles:
-        - geerlingguy.exim
+      - role: geerlingguy.exim
+        vars:
+          exim_dc_eximconfig_configtype: satellite
+          exim_dc_readhost: 'domain.org'
+          exim_dc_smarthost: 'mail.domain.org'
+          exim_dc_hide_mailname: 'true'
 
 ## License
 

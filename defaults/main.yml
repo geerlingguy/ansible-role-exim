@@ -1,10 +1,25 @@
 ---
-# Main configuration type. Should be 'internet' for public mail sending, or
-# 'local' if mail should only be delivered locally. See Exim documentation for
-# other options.
+# Mail configuration type. Should be one of:
+# - 'internet' for public mail facing server,
+# - 'smarthost' for relay via smarthost, but accept via SMTP, 
+# - 'satellite' if sending via smarthost (c.f. 'exim_dc_smarthost'), or
+# - 'local' if mail should only be delivered locally. 
+# See Exim documentation for other options.
 exim_dc_eximconfig_configtype: internet
 
-# Other exim directives.
+# Other hostnames for which this host will accept email.
+exim_dc_other_hostnames: "{{ansible_hostname}}"
+
+# Relay mail through a different "smarthost" (or for 'satellite')
+exim_dc_smarthost: ''
+
+# Rewrite outgoing mail local machine with this value.
+exim_dc_readhost: ''
+
+# Hide the local mailname in the headers of outgoing messages (or not).
+exim_dc_hide_mailname: ''
+
+# Local delivery method.
 exim_dc_localdelivery: mail_spool
 
 # Set a primary_hostname. If empty, the directive will be ignored.

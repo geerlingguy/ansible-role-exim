@@ -16,6 +16,14 @@
   with_items:
     - regexp: '^dc_eximconfig_configtype'
       line: "dc_eximconfig_configtype='{{ exim_dc_eximconfig_configtype }}'"
+    - regexp: '^dc_other_hostnames'
+      line: "dc_other_hostnames='{{ exim_dc_other_hostnames }}'"
+    - regexp: '^dc_smarthost'
+      line: "dc_smarthost='{{ exim_dc_smarthost }}'"
+    - regexp: '^dc_readhost'
+      line: "dc_readhost='{{ exim_dc_readhost }}'"
+    - regexp: '^dc_hide_mailname'
+      line: "dc_hide_mailname='{{ exim_dc_hide_mailname }}'"
     - regexp: '^dc_localdelivery'
       line: "dc_localdelivery='{{ exim_dc_localdelivery }}'"
   notify: restart exim
