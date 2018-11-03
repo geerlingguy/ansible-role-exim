@@ -17,9 +17,9 @@ Available variables are listed below, along with default values (see `defaults/m
 Mail configuration type. Should be one of:
 
   - 'internet' for public mail facing server,
-  - 'smarthost' for relay via smarthost, but accept via SMTP, 
+  - 'smarthost' for relay via smarthost, but accept via SMTP,
   - 'satellite' if sending via smarthost (c.f. 'exim_dc_smarthost'), or
-  - 'local' if mail should only be delivered locally. 
+  - 'local' if mail should only be delivered locally.
 
 See Exim documentation for other options.  *(Debian/Ubuntu only)*
 
