@@ -27,7 +27,9 @@
     - regexp: '^dc_localdelivery'
       line: "dc_localdelivery='{{ exim_dc_localdelivery }}'"
   notify: restart exim
-  when: ansible_os_family == 'Debian'
+  when:
+    - ansible_os_family == 'Debian'
+    - not ansible_check_mode
 
 - name: Configure primary_hostname (if set).
   lineinfile:
