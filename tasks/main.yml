@@ -28,7 +28,7 @@
     line: "primary_hostname={{ exim_primary_hostname }}"
     state: present
   notify: restart exim
-  when: exim_primary_hostname
+  when: exim_primary_hostname is defined and exim_primary_hostname
 
 - name: Ensure exim is running.
   service: "name={{ exim_daemon }} state=started enabled=yes"
