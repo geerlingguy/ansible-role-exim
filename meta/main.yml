@@ -2,6 +2,7 @@
 dependencies: []
 
 galaxy_info:
+  role_name: exim
   author: geerlingguy
   description: Exim installation for Linux.
   company: "Midwestern Mac, LLC"
