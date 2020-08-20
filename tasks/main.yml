@@ -13,6 +13,7 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     state: present
+    mode: 0644
   with_items:
     - regexp: '^dc_eximconfig_configtype'
       line: "dc_eximconfig_configtype='{{ exim_dc_eximconfig_configtype }}'"
@@ -27,6 +28,7 @@
     regexp: '^#?\s?primary_hostname'
     line: "primary_hostname={{ exim_primary_hostname }}"
     state: present
+    mode: 0644
   notify: restart exim
   when: exim_primary_hostname is defined and exim_primary_hostname
 
