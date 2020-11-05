@@ -1,6 +1,6 @@
 # Ansible Role: Exim
 
-[![Build Status](https://travis-ci.com/geerlingguy/ansible-role-exim.svg?branch=master)](https://travis-ci.com/geerlingguy/ansible-role-exim)
+[![CI](https://github.com/geerlingguy/ansible-role-exim/workflows/CI/badge.svg?event=push)](https://github.com/geerlingguy/ansible-role-exim/actions?query=workflow%3ACI)
 
 Installs Exim (a Mail Transfer Agent) on RedHat/CentOS or Debian/Ubuntu.
 
