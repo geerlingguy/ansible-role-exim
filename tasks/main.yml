@@ -22,6 +22,15 @@
   notify: restart exim
   when: ansible_os_family == 'Debian'
 
+- name: Configure smarthost (if set).
+  lineinfile:
+    dest: "{{ exim_configuration_file }}"
+    regexp: '^dc_smarthost'
+    line: "dc_smarthost='{{ exim_dc_smarthost }}'"
+    state: present
+  notify: restart exim
+  when: exim_dc_smarthost is defined and exim_dc_smarthost
+
 - name: Configure primary_hostname (if set).
   lineinfile:
     dest: "{{ exim_configuration_file }}"
