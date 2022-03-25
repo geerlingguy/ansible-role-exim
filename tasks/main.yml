@@ -19,6 +19,10 @@
       line: "dc_eximconfig_configtype='{{ exim_dc_eximconfig_configtype }}'"
     - regexp: '^dc_localdelivery'
       line: "dc_localdelivery='{{ exim_dc_localdelivery }}'"
+    - regexp: '^dc_local_interfaces'
+      line: "dc_local_interfaces='{{ exim_dc_local_interfaces }}'"
+    - regexp: '^dc_relay_nets'
+      line: "dc_relay_nets='{{ exim_dc_relay_nets }}'"
   notify: restart exim
   when: ansible_os_family == 'Debian'
 
