@@ -5,7 +5,9 @@
 
 # Setup/install tasks.
 - name: Ensure exim is installed.
-  package: "name={{ exim_package }} state=present"
+  package:
+    name: "{{ exim_package }}"
+    state: present
 
 - name: Configure exim (Debian only).
   lineinfile:
@@ -30,7 +32,12 @@
     state: present
     mode: 0644
   notify: restart exim
-  when: exim_primary_hostname is defined and exim_primary_hostname
+  when:
+    - exim_primary_hostname is defined
+    - exim_primary_hostname | length > 0
 
 - name: Ensure exim is running.
-  service: "name={{ exim_daemon }} state=started enabled=yes"
+  service:
+    name: "{{ exim_daemon }}"
+    state: started
+    enabled: True
